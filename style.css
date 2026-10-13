@@ -1,0 +1,2163 @@
+/* ==========================================================================
+   STYLE.CSS - WEBSITE PORTOFOLIO TIM
+   Sesuai Ketentuan BAB 1-3 & Wireframe (Home, Profile, Projects, Contact)
+   Palet Warna: Dark Chocolate (#3B2F2F), Milk Tea (#D8C5A6), Misty Rose (#F3C6C6)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* --- CSS Variables & Design Tokens --- */
+:root {
+  /* Brand / Scheme Colors */
+  --color-primary: #3B2F2F;        /* Dark Chocolate */
+  --color-secondary: #D8C5A6;      /* Milk Tea */
+  --color-accent: #F3C6C6;         /* Misty Rose */
+
+  /* Neutral & Wireframe Shades (Light Mode) */
+  --bg-page: #616161;              /* Wireframe base dark grey */
+  --bg-navbar: #D9D9D9;            /* Wireframe top bar */
+  --bg-hero: #AFAAAA;              /* Wireframe hero band */
+  --bg-card: #D9D9D9;              /* Wireframe card */
+  --bg-input: #AFAAAA;             /* Wireframe input field */
+  --bg-button: #7F7979;            /* Wireframe button dark */
+  --bg-subbar: #AFAAAA;            /* Wireframe sub-bar */
+
+  --text-primary: #000000;
+  --text-muted: #2d2d2d;
+  --text-hero: #000000;
+  --text-btn-dark: #FFFFFF;
+
+  --border-color: #000000;
+  --border-width: 1.5px;
+  --card-border: 1.5px solid #000000;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.22);
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --transition: all 0.25s ease;
+}
+
+/* --- Dark Theme Variables --- */
+.dark-theme {
+  --bg-page: #1e1e1e;
+  --bg-navbar: #2d2926;            /* Deep dark chocolate tone */
+  --bg-hero: #272321;
+  --bg-card: #342e2b;
+  --bg-input: #443c37;
+  --bg-button: #544943;
+  --bg-subbar: #272321;
+
+  --text-primary: #f5f2ed;
+  --text-muted: #d0c7bd;
+  --text-hero: #f5f2ed;
+  --text-btn-dark: #f5f2ed;
+
+  --border-color: #70625a;
+  --card-border: 1.5px solid #70625a;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.65);
+}
+
+/* --- Global Reset & Base Typography --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR (Konsisten di semua 4 halaman sesuai Wireframe)
+   ========================================================================== */
+.navbar-wrapper {
+  background-color: var(--bg-navbar);
+  border-bottom: var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.navbar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 14px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: var(--card-border);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-right-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 14px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 7px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: rgba(0, 0, 0, 0.08);
+  outline: 1.5px solid var(--border-color);
+}
+
+.dark-theme .nav-links a:hover,
+.dark-theme .nav-links a.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  outline: 1.5px solid var(--border-color);
+}
+
+/* Toggle Theme Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: var(--card-border);
+  padding: 7px 16px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-accent);
+  color: #000000;
+}
+
+/* Smooth Page Load Animation */
+@keyframes pageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: pageFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   HALAMAN 1: HOME PAGE (index.html)
+   ========================================================================== */
+.hero-section {
+  background-color: var(--bg-hero);
+  border-bottom: var(--card-border);
+  padding: 55px 0 65px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-hero);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+.hero-action {
+  display: flex;
+}
+
+/* Tombol Wireframe Hero (OurProfile) */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  height: 44px;
+  padding: 0 26px;
+  background-color: var(--bg-navbar);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  border: var(--card-border);
+  border-radius: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-hero:hover {
+  background-color: var(--color-secondary);
+  color: #000000;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Team Member Section di Home */
+.team-section {
+  padding: 50px 0 90px;
+  flex: 1;
+}
+
+.team-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 45px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+/* Member Card Sesuai Wireframe 1 */
+.member-card {
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 20px;
+  padding: 40px 25px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.avatar-wrapper {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover .avatar-wrapper {
+  transform: scale(1.04);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 48px;
+  color: #666;
+}
+
+.member-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.member-info {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 26px;
+  flex-grow: 1;
+}
+
+/* Tombol Profile Card */
+.btn-profile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 130px;
+  height: 40px;
+  padding: 0 20px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  border: var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-profile:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   HALAMAN 2: ABOUT / DETAIL PROFIL ANGGOTA (about.html - Wireframe 3)
+   ========================================================================== */
+.subbar-section {
+  background-color: var(--bg-subbar);
+  border-bottom: var(--card-border);
+  padding: 16px 0;
+  transition: background-color 0.3s ease;
+}
+
+.subbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 22px;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  font-size: 14px;
+  font-weight: 600;
+  border: var(--card-border);
+  border-radius: 20px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-back-home:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Member Selector Pill Tabs (untuk memudahkan navigasi 3 anggota di about.html) */
+.member-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.member-tab-btn {
+  padding: 8px 18px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: var(--card-border);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.member-tab-btn.active,
+.member-tab-btn:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Profile Detail Section */
+.profile-detail-section {
+  padding: 50px 0 90px;
+  flex: 1;
+}
+
+.profile-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Kolom Kiri: Foto Persegi Besar + 4 Lingkaran Sosial */
+.profile-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-photo-box {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.profile-photo-box:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.profile-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder-text {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.profile-social-circles {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.social-circle-badge {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.social-circle-badge:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.social-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+.social-icon-img.social-icon-round {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Kolom Kanan: Detail & Deskripsi */
+.profile-right-col {
+  color: var(--text-primary);
+}
+
+.profile-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.profile-academic-info {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.profile-academic-info li {
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.profile-block {
+  margin-bottom: 30px;
+}
+
+.profile-block-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.profile-block-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Skills Badges Container */
+.skills-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.skill-tag {
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+/* Tombol Aksi Bawah: View My Project */
+.profile-action-bottom {
+  margin-top: 40px;
+}
+
+.btn-view-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 30px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  border: var(--card-border);
+  border-radius: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-view-project:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: translateX(4px) translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   HALAMAN 3: PROJECTS (project.html - Wireframe 4)
+   ========================================================================== */
+.projects-header-section {
+  padding: 50px 0 20px;
+}
+
+.projects-header-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.projects-category-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.projects-main-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.projects-main-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.projects-grid-section {
+  padding: 10px 0 90px;
+  flex: 1;
+}
+
+.projects-grid-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.project-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.project-cards-grid.single-project {
+  grid-template-columns: 1fr;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Project Card Sesuai Wireframe 4 */
+.project-card {
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-img-preview {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #ffffff;
+  border: var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 16px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card:hover .project-img-cover {
+  transform: scale(1.04);
+}
+
+.project-card-header {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.project-card-desc {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.project-meta-block {
+  margin-bottom: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .project-meta-block {
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.project-tech-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.project-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-badge {
+  background-color: var(--bg-page);
+  border: var(--card-border);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.tech-badge:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+}
+
+.project-roles-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: var(--card-border);
+}
+
+.project-roles-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.project-team-avatars {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.role-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: var(--card-border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.role-avatar-circle:hover {
+  transform: scale(1.15);
+}
+
+.role-avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-link-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  border: var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-link-circle:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: scale(1.15);
+}
+
+/* ==========================================================================
+   HALAMAN 4: CONTACT US (contact.html - Wireframe 2)
+   ========================================================================== */
+.contact-hero-section {
+  padding: 50px 0 30px;
+}
+
+.contact-hero-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.contact-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.contact-main-section {
+  padding: 20px 0 90px;
+  flex: 1;
+}
+
+.contact-main-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Kotak Kiri: Informasi Kontak Sesuai Wireframe 2 */
+.contact-info-card {
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-circle-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: var(--card-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--text-primary);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease;
+}
+
+.contact-info-item:hover .contact-circle-icon {
+  transform: scale(1.08);
+}
+
+.contact-icon-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Bentuk foto sosmed (Instagram) dibuat bulat sempurna persis seperti logo email */
+.contact-icon-img.contact-icon-sosmed {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 0;
+}
+
+.contact-info-text h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.contact-info-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Kotak Kanan: Form Kirim Pesan Sesuai Wireframe 2 */
+.contact-form-card {
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 20px;
+  padding: 40px 45px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contact-form-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.form-header-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 26px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: var(--card-border);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-theme .form-input::placeholder,
+.dark-theme .form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(243, 198, 198, 0.6);
+  transform: translateY(-1px);
+}
+
+.dark-theme .form-input:focus,
+.dark-theme .form-textarea:focus {
+  background-color: #2a2522;
+  color: #ffffff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* State Error Form */
+.input-error {
+  border-color: #dc2626 !important;
+  background-color: #fee2e2 !important;
+  color: #000000 !important;
+}
+
+.error-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+  margin-top: 6px;
+}
+
+.form-feedback {
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+}
+
+.form-feedback.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* Tombol Kirim Pesan */
+.btn-kirim-pesan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  font-size: 16px;
+  font-weight: 700;
+  border: var(--card-border);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  margin-top: 10px;
+}
+
+.btn-kirim-pesan:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   EFEK PERGERAKAN INTERAKTIF SAAT TOMBOL DITEKAN (PRESS EFFECT)
+   ========================================================================== */
+.btn-hero:active,
+.btn-profile:active,
+.btn-back-home:active,
+.member-tab-btn:active,
+.btn-view-project:active,
+.btn-kirim-pesan:active,
+.theme-toggle-btn:active,
+.nav-links a:active,
+.social-circle-badge:active,
+.project-link-circle:active {
+  transform: scale(0.93) translateY(2px) !important;
+  transition: transform 0.08s ease !important;
+}
+
+/* ==========================================================================
+   FOOTER (Simpel, Kompak, Selaras)
+   ========================================================================== */
+.footer {
+  background-color: var(--bg-navbar);
+  border-top: var(--card-border);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVE NAVBAR (Menu Bar Lurus di Tengah Saat Ukuran Jendela Mengecil)
+   ========================================================================== */
+@media (max-width: 1040px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .logo {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .nav-right-group {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .nav-links a {
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+
+  .theme-toggle-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .logo {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .logo-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-right-group {
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    gap: 6px 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-links a {
+    font-size: 12.5px;
+    padding: 4px 10px;
+  }
+
+  .theme-toggle-btn {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================================================================
+   AMBIENT FLOATING BUBBLE (Gelembung Visual Melayang di Latar Belakang)
+   ========================================================================== */
+.ambient-floating-bubble {
+  position: fixed;
+  top: 15%;
+  right: 10%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(243, 198, 198, 0.45) 0%, rgba(216, 197, 166, 0.28) 50%, rgba(59, 47, 47, 0.04) 100%);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.5), 0 30px 80px rgba(0, 0, 0, 0.1);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: bubbleFloatAmbient 9s ease-in-out infinite alternate;
+}
+
+.dark-theme .ambient-floating-bubble {
+  background: radial-gradient(circle at 35% 30%, rgba(168, 88, 88, 0.3) 0%, rgba(84, 73, 67, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.08), 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes bubbleFloatAmbient {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-24px) scale(1.03);
+  }
+  100% {
+    transform: translateY(12px) rotate(4deg);
+  }
+}
+
+/* ==========================================================================
+   BUBBLE VIEWPORT & CONTAINER (Terkunci Pas di Layar Tanpa Window Scrolling)
+   ========================================================================== */
+.home-bubble-viewport,
+.about-bubble-viewport,
+.project-bubble-viewport,
+.contact-bubble-viewport {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.home-bubble-wrapper {
+  width: 100%;
+  max-width: 1140px;
+  height: 100%;
+  max-height: calc(100% - 4px);
+  border-radius: 28px;
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.home-bubble-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 36px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.home-bubble-slide.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.home-bubble-slide.prev {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.97);
+}
+
+.home-bubble-slide.next {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+}
+
+/* Slide 0: Hero Section di dalam Bubble */
+.hero-bubble-content {
+  text-align: center;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-bubble-content .hero-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.scroll-indicator-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px dashed var(--border-color);
+  animation: pulseHint 2s infinite ease-in-out;
+  cursor: pointer;
+}
+
+.dark-theme .scroll-indicator-hint {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+@keyframes pulseHint {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+
+/* Navigasi Dots Samping Bubble */
+.bubble-nav-indicator {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.bubble-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  opacity: 0.35;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+}
+
+.bubble-nav-dot.active {
+  opacity: 1;
+  height: 28px;
+  border-radius: 14px;
+  background-color: var(--color-primary);
+}
+
+.dark-theme .bubble-nav-dot.active {
+  background-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   SLIDE 1-3: TEAM MEMBER SINGLE BUBBLE (Tampilan Laptop & Komputer)
+   - 1 Member Per Scroll
+   - Foto di Kiri, Informasi di Kanan
+   ========================================================================== */
+.team-member-single-bubble {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.member-horizontal-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1.5px solid var(--border-color);
+  border-radius: 28px;
+  padding: 24px 34px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dark-theme .member-horizontal-card {
+  background: rgba(45, 41, 38, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.member-horizontal-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.member-avatar-box {
+  width: 190px;
+  height: 190px;
+  border-radius: 24px;
+  border: var(--card-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-hero);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.member-avatar-box:hover {
+  transform: scale(1.02);
+}
+
+.member-avatar-large {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.member-badge-pill {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #000000;
+  border: var(--card-border);
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.member-horizontal-info-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.member-step-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.dark-theme .member-step-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.member-horizontal-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.member-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  list-style: none;
+  margin: 2px 0;
+}
+
+.member-meta-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  background-color: var(--bg-input);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.member-horizontal-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.member-action-row {
+  margin-top: 6px;
+}
+
+.btn-profile-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 22px;
+  border: var(--card-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-profile-large:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   TAMPILAN HP: PROFILE TEAM MEMBER TERPISAH DENGAN EFEK BUBBLE KHUSUS
+   ========================================================================== */
+@media (max-width: 680px) {
+  .home-bubble-slide {
+    padding: 14px 16px;
+  }
+
+  .hero-bubble-content .hero-title {
+    font-size: 26px;
+  }
+
+  .team-member-single-bubble {
+    padding: 4px;
+  }
+
+  /* Khusus HP: Efek Bubble Visual Menyeluruh pada Profil Member */
+  .member-horizontal-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 16px 14px;
+    border-radius: 34px;
+    border: 2px solid var(--border-color);
+    background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.95) 0%, rgba(243, 198, 198, 0.5) 55%, rgba(216, 197, 166, 0.4) 100%);
+    box-shadow: 
+      inset 0 0 25px rgba(255, 255, 255, 0.8),
+      0 10px 28px rgba(59, 47, 47, 0.2),
+      0 0 0 2px var(--border-color);
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  .dark-theme .member-horizontal-card {
+    background: radial-gradient(circle at 50% 20%, rgba(65, 55, 50, 0.95) 0%, rgba(45, 38, 35, 0.85) 60%, rgba(30, 25, 23, 0.95) 100%);
+    box-shadow: 
+      inset 0 0 25px rgba(243, 198, 198, 0.2),
+      0 10px 28px rgba(0, 0, 0, 0.55),
+      0 0 0 2px var(--border-color);
+  }
+
+  /* Foto Bulat Menyerupai Inti Gelembung dengan Efek Halo */
+  .member-avatar-box {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    border: 3px solid var(--border-color);
+    box-shadow: 0 0 0 4px rgba(243, 198, 198, 0.65), var(--shadow-sm);
+    margin: 0 auto;
+  }
+
+  .member-badge-pill {
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 16px;
+  }
+
+  .member-horizontal-info-col {
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .member-step-tag {
+    align-self: center;
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .member-horizontal-name {
+    font-size: 18px;
+  }
+
+  .member-meta-list {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .member-meta-list li {
+    font-size: 11px;
+    padding: 2px 7px;
+  }
+
+  .member-horizontal-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .btn-profile-large {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .bubble-nav-indicator {
+    right: 8px;
+    gap: 8px;
+  }
+
+  .bubble-nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .bubble-nav-dot.active {
+    height: 22px;
+  }
+}
+
+/* ==========================================================================
+   HALAMAN ABOUT US (about.html - Pas di Laptop & HP)
+   ========================================================================== */
+.subbar-section {
+  background-color: var(--bg-subbar);
+  border-bottom: var(--card-border);
+  padding: 6px 24px;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.subbar-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 16px;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  font-size: 13px;
+  font-weight: 600;
+  border: var(--card-border);
+  border-radius: 20px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-back-home:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.member-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.member-tab-btn {
+  padding: 6px 14px;
+  height: 34px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: var(--card-border);
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+
+.member-tab-btn.active,
+.member-tab-btn:hover {
+  background-color: var(--color-accent);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Profile Bubble Card (About Page) */
+.profile-bubble-card {
+  width: 100%;
+  max-width: 1140px;
+  height: 100%;
+  max-height: calc(100% - 4px);
+  border-radius: 28px;
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  box-shadow: var(--shadow-lg);
+  padding: 22px 34px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bubble-fade-out {
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+}
+
+.bubble-fade-in {
+  animation: bubbleFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bubbleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: center;
+  height: 100%;
+  max-height: 100%;
+}
+
+.profile-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.profile-photo-box {
+  width: 175px;
+  height: 175px;
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.profile-photo-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.profile-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-social-circles {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.social-circle-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.social-circle-badge:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.social-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+.social-icon-img.social-icon-round {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 6px;
+  color: var(--text-primary);
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.profile-role {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.profile-academic-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  list-style: none;
+  font-size: 12.5px;
+  margin: 2px 0;
+}
+
+.profile-academic-info li {
+  background-color: var(--bg-input);
+  padding: 2px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.profile-block {
+  margin-top: 2px;
+}
+
+.profile-block-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.profile-block-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.skills-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.skill-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.profile-action-bottom {
+  margin-top: 4px;
+}
+
+.btn-view-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  background-color: var(--bg-button);
+  color: var(--text-btn-dark);
+  font-size: 12.5px;
+  font-weight: 700;
+  border: var(--card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-view-project:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsif About di Layar HP */
+@media (max-width: 768px) {
+  .subbar-container {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .btn-back-home {
+    display: none;
+  }
+
+  .member-tabs {
+    width: 100%;
+    justify-content: center;
+    overflow-x: auto;
+    gap: 4px;
+  }
+
+  .member-tab-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+    height: 28px;
+  }
+
+  .profile-bubble-card {
+    padding: 14px 12px;
+    border-radius: 22px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .profile-left-col {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .profile-photo-box {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+  }
+
+  .social-circle-badge {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+  }
+
+  .profile-right-col {
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .profile-name {
+    font-size: 17px;
+  }
+
+  .profile-role {
+    font-size: 12px;
+  }
+
+  .profile-academic-info {
+    justify-content: center;
+    font-size: 10.5px;
+    gap: 4px;
+  }
+
+  .profile-academic-info li {
+    padding: 1px 6px;
+  }
+
+  .profile-block-title {
+    font-size: 12px;
+  }
+
+  .profile-block-desc {
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+
+  .skills-tags-container {
+    justify-content: center;
+  }
+
+  .skill-tag {
+    font-size: 10.5px;
+    padding: 2px 7px;
+  }
+
+  .btn-view-project {
+    width: 100%;
+    height: 32px;
+    font-size: 11.5px;
+  }
+}
+
+/* ==========================================================================
+   PROJECT & CONTACT BUBBLE CARDS (Pas di Layar)
+   ========================================================================== */
+.project-bubble-card,
+.contact-bubble-card {
+  width: 100%;
+  max-width: 1140px;
+  height: 100%;
+  max-height: calc(100% - 4px);
+  border-radius: 28px;
+  background-color: var(--bg-card);
+  border: var(--card-border);
+  box-shadow: var(--shadow-lg);
+  padding: 24px 34px;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .project-bubble-card,
+  .contact-bubble-card {
+    padding: 16px 14px;
+    border-radius: 22px;
+  }
+
+  .project-card-header {
+    font-size: 16px;
+  }
+
+  .project-card-desc {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 16px 14px;
+  }
+}

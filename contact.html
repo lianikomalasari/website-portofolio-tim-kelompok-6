@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hubungi kami untuk kolaborasi proyek, diskusi, atau pertanyaan perkuliahan.">
+  <title>Contact Us - Web Portofolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/bubble-scroll.js" defer></script>
+  <script src="js/form.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar Sesuai Wireframe -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="foto1.jpg" alt="Logo" class="logo-img">
+        <span>UTS PemWeb</span>
+      </a>
+      <div class="nav-right-group">
+        <ul class="nav-links">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="project.html">Project</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+        <button type="button" class="theme-toggle-btn" aria-label="Beralih tema">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Konten Kontak Dikemas Dalam Bubble Terpusat -->
+  <main class="contact-bubble-viewport">
+    <div class="contact-bubble-card">
+      
+      <!-- Header Section Sesuai Wireframe 2 -->
+      <section class="contact-hero-section" style="padding: 0 0 24px;">
+        <h1 class="contact-title">Contact</h1>
+        <p class="contact-subtitle">Contact Wisely</p>
+      </section>
+
+      <!-- Main Section (2 Kolom: Informasi Kontak & Form Kirim Pesan) Sesuai Wireframe 2 -->
+      <section class="contact-main-section" style="padding: 0;">
+        <div class="contact-grid">
+          
+          <!-- Kotak Kiri: Informasi Kontak dengan Ikon Bulat -->
+          <div class="contact-info-card">
+            
+            <div class="contact-info-item">
+              <div class="contact-circle-icon" aria-hidden="true">
+                <img src="Logo Email.jpg" alt="Email" class="contact-icon-img">
+              </div>
+              <div class="contact-info-text">
+                <h3>Email</h3>
+                <p>porto@unesa.ac.id</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-circle-icon" aria-hidden="true">
+                <img src="Logo Instagram.jpg" alt="Instagram" class="contact-icon-img contact-icon-sosmed">
+              </div>
+              <div class="contact-info-text">
+                <h3>Social Media</h3>
+                <p>@porto_unesa</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-circle-icon" aria-hidden="true">
+                <img src="Logo Maps.jpg" alt="Location Maps" class="contact-icon-img" onerror="this.onerror=null; this.src='Logo Maps.jpg';">
+              </div>
+              <div class="contact-info-text">
+                <h3>Location</h3>
+                <p>Surabaya, Jawa Timur, Indonesia</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Kotak Kanan: Form Kirim Pesan -->
+          <div class="contact-form-card">
+            <h2 class="form-header-title">Kirim Pesan</h2>
+            
+            <div id="formFeedback" class="form-feedback" role="alert"></div>
+
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="userName" class="form-label">User</label>
+                <input 
+                  type="text" 
+                  id="userName" 
+                  name="userName" 
+                  class="form-input" 
+                  placeholder="Masukan" 
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="userEmail" class="form-label">Email</label>
+                <input 
+                  type="email" 
+                  id="userEmail" 
+                  name="userEmail" 
+                  class="form-input" 
+                  placeholder="Masukan" 
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage" class="form-label">Pesan</label>
+                <textarea 
+                  id="userMessage" 
+                  name="userMessage" 
+                  class="form-textarea" 
+                  rows="5" 
+                  placeholder="Masukan" 
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-kirim-pesan">
+                Kirim Pesan &rarr;
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Tim Portofolio Mahasiswa. Dibuat untuk Tugas Perkuliahan Pemrograman Web.</p>
+  </footer>
+
+</body>
+</html>

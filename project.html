@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyek Ulangan Tengah Semester (UTS) mata kuliah Pemrograman Web yang dikembangkan oleh tim mahasiswa.">
+  <title>Proyek Kami - Web Portofolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/bubble-scroll.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar Sesuai Wireframe -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="foto1.jpg" alt="Logo" class="logo-img">
+        <span>UTS PemWeb</span>
+      </a>
+      <div class="nav-right-group">
+        <ul class="nav-links">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="project.html" class="active">Project</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <button type="button" class="theme-toggle-btn" aria-label="Beralih tema">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Konten Proyek Dikemas Dalam Bubble Terpusat -->
+  <main class="project-bubble-viewport">
+    <div class="project-bubble-card">
+      
+      <!-- Header Section Sesuai Wireframe 4 (Projects / Proyek Kami / Description) -->
+      <section class="projects-header-section" style="padding: 0 0 20px;">
+        <p class="projects-category-label">Projects</p>
+        <h1 class="projects-main-title">Proyek Kami</h1>
+        <p class="projects-main-desc">
+          Karya utama yang dikembangkan secara kolaboratif oleh seluruh anggota tim dalam penugasan akademik perkuliahan.
+        </p>
+      </section>
+
+      <!-- Section Kartu Proyek Tunggal: UTS (Ulangan Tengah Semester) Sesuai Wireframe 4 -->
+      <section class="projects-grid-section" style="padding: 0;">
+        <div class="project-cards-grid single-project">
+
+          <!-- Proyek Tunggal: UTS -->
+          <article class="project-card">
+            <div class="project-img-preview">
+              <img src="Logo UTS.png" alt="Logo UTS Pemrograman Web" class="project-img-cover">
+            </div>
+            
+            <h2 class="project-card-header">UTS (Ulangan Tengah Semester) - Web Portofolio Tim</h2>
+            <p class="project-card-desc">
+              Proyek penugasan Ulangan Tengah Semester (UTS) mata kuliah Pemrograman Web yang berfokus pada perancangan dan implementasi website portofolio tim secara responsif. Menerapkan tata letak persis sesuai rancangan wireframe, sistem variabel warna terstandarisasi (Dark Chocolate, Milk Tea, Misty Rose), pengalihan tema terang &amp; gelap (Light/Dark mode) dengan penyimpanan localStorage, validasi formulir interaktif, serta pembagian peran kolaboratif antar anggota tim.
+            </p>
+
+            <div class="project-meta-block">
+              <p class="project-tech-label">Tecnology</p>
+              <div class="project-tech-badges">
+                <span class="tech-badge">HTML5 Semantik</span>
+                <span class="tech-badge">CSS Grid &amp; Flexbox</span>
+                <span class="tech-badge">Vanilla JavaScript</span>
+                <span class="tech-badge">LocalStorage Theme</span>
+                <span class="tech-badge">Responsive Design</span>
+              </div>
+            </div>
+
+            <div class="project-roles-block">
+              <span class="project-roles-label">Roles Team</span>
+              <div class="project-team-avatars">
+                <div class="role-avatar-circle" title="Rahmadhani Akhsanul Rijal (Project Manager)">
+                  <img src="foto.jpeg" alt="Rahmadhani Akhsanul Rijal">
+                </div>
+                <div class="role-avatar-circle" title="Rozaq Abdul Ghani (Desain UI)">
+                  <img src="Foto Rozak.jpeg" alt="Rozaq Abdul Ghani" onerror="this.onerror=null; this.src='foto2.jpg';">
+                </div>
+                <div class="role-avatar-circle" title="Liani Komala Sari (Document Editor)">
+                  <img src="Foto Liani.jpeg" alt="Liani Komala Sari" onerror="this.onerror=null; this.src='foto1.jpg';">
+                </div>
+                <a href="about.html" class="project-link-circle" title="Lihat Profil Tim" aria-label="Lihat Profil Tim">&rarr;</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Tim Portofolio Mahasiswa. Dibuat untuk Tugas Perkuliahan Pemrograman Web.</p>
+  </footer>
+
+</body>
+</html>

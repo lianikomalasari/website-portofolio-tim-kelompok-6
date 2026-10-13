@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website Portofolio Tim Mahasiswa - Menampilkan profil anggota, proyek unggulan, dan kontak tim.">
+  <title>Web Portofolio - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/bubble-scroll.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar Sesuai Wireframe -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="foto1.jpg" alt="Logo" class="logo-img">
+        <span>UTS PemWeb</span>
+      </a>
+      <div class="nav-right-group">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home Page</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="project.html">Project</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <button type="button" class="theme-toggle-btn" aria-label="Beralih tema">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Konten Utama Dikemas dalam Satu Bubble Terpusat yang Bertransisi Halus Saat Discroll -->
+  <main class="home-bubble-viewport">
+    <div class="home-bubble-wrapper">
+      
+      <!-- Slide 0: Hero Section (Bubble Bagian 1) -->
+      <section class="home-bubble-slide active" data-slide="0">
+        <div class="hero-bubble-content">
+          <h1 class="hero-title">Portofolio Web</h1>
+          <div class="hero-action">
+            <a href="about.html" class="btn-hero">OurProfile</a>
+          </div>
+          <div class="scroll-indicator-hint" onclick="document.querySelectorAll('.bubble-nav-dot')[1].click()" title="Klik atau scroll untuk melihat anggota tim">
+            <span>Scroll untuk melihat Team Member</span> &darr;
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 1: Team Member 1 (Rahmadhani Akhsanul Rijal) -->
+      <section class="home-bubble-slide next" data-slide="1">
+        <div class="team-member-single-bubble">
+          <div class="member-horizontal-card">
+            <div class="member-horizontal-photo-col">
+              <div class="member-avatar-box">
+                <img src="foto.jpeg" alt="Foto Rahmadhani Akhsanul Rijal" class="member-avatar-large" onerror="this.onerror=null; this.src='foto.jpeg';">
+              </div>
+              <span class="member-badge-pill">Project Manager</span>
+            </div>
+            <div class="member-horizontal-info-col">
+              <p class="member-step-tag">Team Member 1 / 3</p>
+              <h2 class="member-horizontal-name">Rahmadhani Akhsanul Rijal</h2>
+              <ul class="member-meta-list">
+                <li><strong>NIM:</strong> 25091397127</li>
+                <li><strong>Prodi:</strong> D4 Manajemen Informatika</li>
+                <li><strong>Kelas:</strong> 2025D</li>
+              </ul>
+              <p class="member-horizontal-desc">
+                Bertanggung jawab dalam mengkoordinasikan seluruh alur pengerjaan proyek, manajemen kebutuhan, pembagian tugas anggota tim, monitoring jadwal, dan pengawasan kualitas produk akhir.
+              </p>
+              <div class="member-action-row">
+                <a href="about.html?member=1" class="btn-profile-large">Lihat Profil Lengkap &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: Team Member 2 (Rozaq Abdul Ghani) -->
+      <section class="home-bubble-slide next" data-slide="2">
+        <div class="team-member-single-bubble">
+          <div class="member-horizontal-card">
+            <div class="member-horizontal-photo-col">
+              <div class="member-avatar-box">
+                <img src="Foto Rozak.jpeg" alt="Foto Rozaq Abdul Ghani" class="member-avatar-large" onerror="this.onerror=null; this.src='foto2.jpg';">
+              </div>
+              <span class="member-badge-pill">Desain UI</span>
+            </div>
+            <div class="member-horizontal-info-col">
+              <p class="member-step-tag">Team Member 2 / 3</p>
+              <h2 class="member-horizontal-name">Rozaq Abdul Ghani</h2>
+              <ul class="member-meta-list">
+                <li><strong>NIM:</strong> 25091397145</li>
+                <li><strong>Prodi:</strong> D4 Manajemen Informatika</li>
+                <li><strong>Kelas:</strong> 2025D</li>
+              </ul>
+              <p class="member-horizontal-desc">
+                Berfokus pada perancangan antarmuka visual website yang estetis, modern, dan intuitif. Menerjemahkan kebutuhan pengguna ke dalam wireframe, mockup tata letak, palet warna, dan prototipe sistem.
+              </p>
+              <div class="member-action-row">
+                <a href="about.html?member=2" class="btn-profile-large">Lihat Profil Lengkap &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Team Member 3 (Liani Komala Sari) -->
+      <section class="home-bubble-slide next" data-slide="3">
+        <div class="team-member-single-bubble">
+          <div class="member-horizontal-card">
+            <div class="member-horizontal-photo-col">
+              <div class="member-avatar-box">
+                <img src="Foto Liani.jpeg" alt="Foto Liani Komala Sari" class="member-avatar-large" onerror="this.onerror=null; this.src='foto1.jpg';">
+              </div>
+              <span class="member-badge-pill">Document Editor</span>
+            </div>
+            <div class="member-horizontal-info-col">
+              <p class="member-step-tag">Team Member 3 / 3</p>
+              <h2 class="member-horizontal-name">Liani Komala Sari</h2>
+              <ul class="member-meta-list">
+                <li><strong>NIM:</strong> 25091397143</li>
+                <li><strong>Prodi:</strong> D4 Manajemen Informatika</li>
+                <li><strong>Kelas:</strong> 2025D</li>
+              </ul>
+              <p class="member-horizontal-desc">
+                Bertanggung jawab menyusun, meninjau, dan menyempurnakan seluruh dokumentasi proyek dari BAB 1 hingga selesai sesuai kaidah penulisan akademik dan laporan teknis perkuliahan.
+              </p>
+              <div class="member-action-row">
+                <a href="about.html?member=3" class="btn-profile-large">Lihat Profil Lengkap &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigasi Dots Samping Bubble (4 Slide) -->
+      <nav class="bubble-nav-indicator" aria-label="Navigasi Bagian Bubble">
+        <button type="button" class="bubble-nav-dot active" data-slide="0" aria-label="Slide 0: Hero" title="Hero"></button>
+        <button type="button" class="bubble-nav-dot" data-slide="1" aria-label="Slide 1: Rahmadhani" title="Rahmadhani (Project Manager)"></button>
+        <button type="button" class="bubble-nav-dot" data-slide="2" aria-label="Slide 2: Rozaq" title="Rozaq (Desain UI)"></button>
+        <button type="button" class="bubble-nav-dot" data-slide="3" aria-label="Slide 3: Liani" title="Liani (Document Editor)"></button>
+      </nav>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Tim Portofolio Mahasiswa. Dibuat untuk Tugas Perkuliahan Pemrograman Web.</p>
+  </footer>
+
+</body>
+</html>
